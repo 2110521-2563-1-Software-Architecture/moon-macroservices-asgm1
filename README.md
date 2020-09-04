@@ -26,8 +26,14 @@
 | Stream added books  | ```function watchBooks() {var call = client.watch({}); call.on('data', function(book) {console.log(book);});}``` | Content Cell  |
 
 ## 4. What are the main differences between REST API and gRPC? 
+REST API directly calls HTTP methods (GET, POST, PUT, PATCH, DELETE) while gRPC uses HTTP/2. In HTTP, the addressable entities are data entities (resources) however they are procedures due to gRPC is based on the Remote Procedure Call (RPC) model. Since gRPC makes better use of HTTP/2 then REST API, gRPC can support high performance and scalability.
 
 ## 5. What is the benefits of introduceinterface in front of the gRPC and REST API of the book services. 
+- The interface helps to define APIs easily.
+- Users clearly understand the interface's expected type of input and output.
+- The details of the implemented function of the interface are hidden from the users.
+- Easy to manage the changes and keep compatibility
+
 
 ## 6. Based on the introduced interface, compare how to call the methods based on gRPC and REST API side-by-side, e.g. in a Table format as shown below. 
 
@@ -40,5 +46,4 @@
 | Stream added books  | ```go run client.go watch```  | Content Cell  |
 
 ## 7. Draw a component diagram representing the book services with and without interfaces. 
-
-
+![comp_diagram](images/comp_diagram.jpg)
