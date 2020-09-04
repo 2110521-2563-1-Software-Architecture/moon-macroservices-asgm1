@@ -26,7 +26,7 @@
 | Insert books  | ```client.insert(book, function(error, empty) {printResponse(error, empty);});```  | ```axios.post(url + `/book`, {id, title, author,});```  |
 | Get books | ```client.get({ id: parseInt(id) }, function(error, book) {printResponse(error, book);});```|  ```axios.get(url + `/book/${id}`);```| 
 | Delete books  | ```client.delete({ id: parseInt(id) }, function(error, empty) {printResponse(error, empty);});``` |  ```axios.delete(url + `/book/${id}`);``` | 
-| Stream added books  | ```var call = client.watch({}); call.on('data', function(book) {console.log(book);});``` |  ```-``` |
+| Stream added books  | ```client.watch({});``` |  ```-``` |
 
 ## 4. What are the main differences between REST API and gRPC? 
 REST API directly calls HTTP methods (GET, POST, PUT, PATCH, DELETE) while gRPC uses HTTP/2. In HTTP, the addressable entities are data entities (resources) however they are procedures due to gRPC is based on the Remote Procedure Call (RPC) model. Since gRPC makes better use of HTTP/2 then REST API, gRPC can support high performance and scalability.
