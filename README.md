@@ -9,8 +9,8 @@
 ## 1. Screenshots of Swagger for your APIs in 2.
 ![all](images/all.png)
 ![get](images/get.png)
-![getall](images/getall.png)
 ![post](images/post.png)
+![getall](images/getall.png)
 ![delete](images/delete.png)
 
 ## 2. Source codes of 2 and 3. 
@@ -20,7 +20,7 @@
 | Functions  | gPRC | REST API |
 | ------------- | ------------- | ------------- |
 | List books  | ```function listBooks() {client.list({}, function(error, books) {printResponse(error, books);});}``` | Content Cell  |
-| Insert books  | ``function insertBook(id, title, author) {var book = { id: parseInt(id), title: title, author: author }; client.insert(book, function(error, empty) {printResponse(error, empty);});}```  | Content Cell  |
+| Insert books  | ```function insertBook(id, title, author) {var book = { id: parseInt(id), title: title, author: author }; client.insert(book, function(error, empty) {printResponse(error, empty);});}```  | Content Cell  |
 | Get books | ```function getBook(id) {client.get({ id: parseInt(id) }, function(error, book) {printResponse(error, book);});}```| Content Cell  |
 | Delete books  | ```function deleteBook(id) {client.delete({ id: parseInt(id) }, function(error, empty) {printResponse(error, empty);});}``` | Content Cell  |
 | Stream added books  | ```function watchBooks() {var call = client.watch({}); call.on('data', function(book) {console.log(book);});}``` | Content Cell  |
