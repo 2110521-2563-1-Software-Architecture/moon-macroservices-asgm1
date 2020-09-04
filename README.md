@@ -22,62 +22,18 @@
 
 | Functions  | gPRC | 
 | ------------- | ------------- | 
-| List books  | ```function listBooks() {client.list({}, function(error, books) {printResponse(error, books);});}``` | 
-| Insert books  | ```function insertBook(id, title, author) {var book = { id: parseInt(id), title: title, author: author }; client.insert(book, function(error, empty) {printResponse(error, empty);});}```  |
-| Get books | ```function getBook(id) {client.get({ id: parseInt(id) }, function(error, book) {printResponse(error, book);});}```| 
-| Delete books  | ```function deleteBook(id) {client.delete({ id: parseInt(id) }, function(error, empty) {printResponse(error, empty);});}``` | 
-| Stream added books  | ```function watchBooks() {var call = client.watch({}); call.on('data', function(book) {console.log(book);});}``` | 
+| List books  | ```client.list({}, function(error, books) {printResponse(error, books);});``` | 
+| Insert books  | ```client.insert(book, function(error, empty) {printResponse(error, empty);});```  |
+| Get books | ```client.get({ id: parseInt(id) }, function(error, book) {printResponse(error, book);});```| 
+| Delete books  | ```client.delete({ id: parseInt(id) }, function(error, empty) {printResponse(error, empty);});``` | 
+| Stream added books  | ```var call = client.watch({}); call.on('data', function(book) {console.log(book);});``` | 
 
 | Functions  | REST API | 
 | ------------- | ------------- | 
-| List books  | ```function listBook() {
-  return axios
-    .get(url + "/book")
-    .then(function (response) {
-      console.log(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-}
-``` | 
-| Insert books  | ```function addBook(id, title, author) {
-  return axios
-    .post(url + `/book`, {
-      id,
-      title,
-      author,
-    })
-    .then(function (response) {
-      console.log(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-}
-```  |
-| Get books | ```function getBook(id) {
-  return axios
-    .get(url + `/book/${id}`)
-    .then(function (response) {
-      console.log(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-}
-```| 
-| Delete books  | ```function deleteBook(id) {
-  return axios
-    .delete(url + `/book/${id}`)
-    .then(function (response) {
-      console.log(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-}
-``` | 
+| List books  | ```axios.get(url + "/book");``` | 
+| Insert books  | ```axios.post(url + `/book`, {id, title, author,});```  |
+| Get books | ```axios.get(url + `/book/${id}`);```| 
+| Delete books  | ```axios.delete(url + `/book/${id}`);``` | 
 | Stream added books  | ```-``` |
 
 ## 4. What are the main differences between REST API and gRPC? 
