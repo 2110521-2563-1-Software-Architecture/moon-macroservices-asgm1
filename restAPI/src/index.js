@@ -1,4 +1,5 @@
 const bodyParser = require("body-parser");
+var path = require("path");
 
 const express = require("express");
 const app = express();
@@ -7,6 +8,9 @@ const port = 8080; // default port to listen
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+var docs_handler = express.static(path.join(__dirname, "../docs"));
+app.use("/static", docs_handler);
+console.log(path.join(__dirname, "../docs"));
 // In-memory array of book objects
 var books = [
   {
