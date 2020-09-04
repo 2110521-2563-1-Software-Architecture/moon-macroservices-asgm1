@@ -25,13 +25,13 @@ function printResponse(error, response) {
   else console.log(response);
 }
 
-exports.listBooks = function listBooks() {
+function listBooks() {
   client.list({}, function (error, books) {
     printResponse(error, books);
   });
-};
+}
 
-exports.insertBook = function insertBook(id, title, author) {
+function insertBook(id, title, author) {
   var book = {
     id: parseInt(id),
     title: title,
@@ -40,9 +40,9 @@ exports.insertBook = function insertBook(id, title, author) {
   client.insert(book, function (error, empty) {
     printResponse(error, empty);
   });
-};
+}
 
-exports.getBook = function getBook(id) {
+function getBook(id) {
   client.get(
     {
       id: parseInt(id),
@@ -51,9 +51,9 @@ exports.getBook = function getBook(id) {
       printResponse(error, book);
     }
   );
-};
+}
 
-exports.deleteBook = function deleteBook(id) {
+function deleteBook(id) {
   client.delete(
     {
       id: parseInt(id),
@@ -62,7 +62,7 @@ exports.deleteBook = function deleteBook(id) {
       printResponse(error, empty);
     }
   );
-};
+}
 
 function watchBooks() {
   var call = client.watch({});
