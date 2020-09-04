@@ -39,11 +39,11 @@ REST API directly calls HTTP methods (GET, POST, PUT, PATCH, DELETE) while gRPC 
 
 | Functions  | gPRC | REST API |
 | ------------- | ------------- | ------------- |
-| List books  | ```go run client.go list```  | Content Cell  |
-| Insert books  | ```go run client.go insert <id> <title> <author>```  | Content Cell  |
-| Get books | ```go run client.go get <id>```  | Content Cell  |
-| Delete books  | ```go run client.go delete <id>```  | Content Cell  |
-| Stream added books  | ```go run client.go watch```  | Content Cell  |
+| List books  | ```go run client.go list```  | ```node client.js listBook```  |
+| Insert books  | ```go run client.go insert <id> <title> <author>```  | ```node client.js addBook <id> <title> <author>```  |
+| Get books | ```go run client.go get <id>```  | ```node client.js getBook <id>```  |
+| Delete books  | ```go run client.go delete <id>```  | ```node client.js deleteBook <id>```  |
+| Stream added books  | ```go run client.go watch```  | ```-```  |
 
 ## 7. Draw a component diagram representing the book services with and without interfaces. 
 ![comp_diagram](images/comp_diagram.jpg)
