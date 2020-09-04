@@ -13,6 +13,21 @@ function listBook() {
     });
 }
 
+function addBook(id, title, author) {
+  return axios
+    .post(url + `/book`, {
+      id: parseInt(id),
+      title,
+      author,
+    })
+    .then(function (response) {
+      console.log(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+
 function getBook(id) {
   return axios
     .get(url + `/book/${id}`)
@@ -27,21 +42,6 @@ function getBook(id) {
 function deleteBook(id) {
   return axios
     .delete(url + `/book/${id}`)
-    .then(function (response) {
-      console.log(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-}
-
-function addBook(id, title, author) {
-  return axios
-    .post(url + `/book`, {
-      id,
-      title,
-      author,
-    })
     .then(function (response) {
       console.log(response.data);
     })
@@ -117,3 +117,10 @@ require("yargs")
     }
   )
   .help().argv;
+
+module.exports = {
+  listBooks: listBook,
+  insertBook: addBook,
+  getBook,
+  deleteBook,
+};
