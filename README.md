@@ -14,6 +14,9 @@
 ![delete](images/delete.png)
 
 ## 2. Source codes of 2 and 3. 
+[gRPC](/grpc)
+
+[REST API](/restAPI)
 
 ## 3. Compare how to call the methods based on gRPC and REST API side-by-side, e.g. in a Table format as shown below.
 
