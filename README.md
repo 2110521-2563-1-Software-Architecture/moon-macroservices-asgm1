@@ -1,10 +1,10 @@
 # Assignment #1: gRPC and REST API Implementation
 
-## Member
-1. นราวิชญ์ ชุติศิลป์ 		6030319921
-2. นวพร ปานดี 			6030324021
-3. พรณภัทร สุดใจประภารัตน์ 	6030394921
-4. รวิภาส อภิกุลวณิช 		6031050121
+## Members
+1. Naravich Chutisilp		    6030319921
+2. Navabhorn Pandee 		    6030324021
+3. Pornapat Sudjaipraparat 	6030394921
+4. Ravipas Aphikulvanich	  6031050121
 
 ## 1. Screenshots of Swagger for your APIs in 2.
 ![all](images/all.png)
