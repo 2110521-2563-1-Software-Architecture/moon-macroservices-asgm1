@@ -20,21 +20,13 @@
 
 ## 3. Compare how to call the methods based on gRPC and REST API side-by-side, e.g. in a Table format as shown below.
 
-| Functions  | gPRC | 
-| ------------- | ------------- | 
-| List books  | ```client.list({}, function(error, books) {printResponse(error, books);});``` | 
-| Insert books  | ```client.insert(book, function(error, empty) {printResponse(error, empty);});```  |
-| Get books | ```client.get({ id: parseInt(id) }, function(error, book) {printResponse(error, book);});```| 
-| Delete books  | ```client.delete({ id: parseInt(id) }, function(error, empty) {printResponse(error, empty);});``` | 
-| Stream added books  | ```var call = client.watch({}); call.on('data', function(book) {console.log(book);});``` | 
-
-| Functions  | REST API | 
-| ------------- | ------------- | 
-| List books  | ```axios.get(url + "/book");``` | 
-| Insert books  | ```axios.post(url + `/book`, {id, title, author,});```  |
-| Get books | ```axios.get(url + `/book/${id}`);```| 
-| Delete books  | ```axios.delete(url + `/book/${id}`);``` | 
-| Stream added books  | ```-``` |
+| Functions  | gPRC | REST API | 
+| ------------- | ------------- | ------------- | 
+| List books  | ```client.list({}, function(error, books) {printResponse(error, books);});``` | ```axios.get(url + "/book");``` | 
+| Insert books  | ```client.insert(book, function(error, empty) {printResponse(error, empty);});```  | ```axios.post(url + `/book`, {id, title, author,});```  |
+| Get books | ```client.get({ id: parseInt(id) }, function(error, book) {printResponse(error, book);});```|  ```axios.get(url + `/book/${id}`);```| 
+| Delete books  | ```client.delete({ id: parseInt(id) }, function(error, empty) {printResponse(error, empty);});``` |  ```axios.delete(url + `/book/${id}`);``` | 
+| Stream added books  | ```var call = client.watch({}); call.on('data', function(book) {console.log(book);});``` |  ```-``` |
 
 ## 4. What are the main differences between REST API and gRPC? 
 REST API directly calls HTTP methods (GET, POST, PUT, PATCH, DELETE) while gRPC uses HTTP/2. In HTTP, the addressable entities are data entities (resources) however they are procedures due to gRPC is based on the Remote Procedure Call (RPC) model. Since gRPC makes better use of HTTP/2 then REST API, gRPC can support high performance and scalability.
