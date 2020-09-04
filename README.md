@@ -14,16 +14,71 @@
 ![delete](images/delete.png)
 
 ## 2. Source codes of 2 and 3. 
+[gRPC](/grpc)
+
+[REST API](/restAPI)
 
 ## 3. Compare how to call the methods based on gRPC and REST API side-by-side, e.g. in a Table format as shown below.
 
-| Functions  | gPRC | REST API |
-| ------------- | ------------- | ------------- |
-| List books  | ```function listBooks() {client.list({}, function(error, books) {printResponse(error, books);});}``` | Content Cell  |
-| Insert books  | ```function insertBook(id, title, author) {var book = { id: parseInt(id), title: title, author: author }; client.insert(book, function(error, empty) {printResponse(error, empty);});}```  | Content Cell  |
-| Get books | ```function getBook(id) {client.get({ id: parseInt(id) }, function(error, book) {printResponse(error, book);});}```| Content Cell  |
-| Delete books  | ```function deleteBook(id) {client.delete({ id: parseInt(id) }, function(error, empty) {printResponse(error, empty);});}``` | Content Cell  |
-| Stream added books  | ```function watchBooks() {var call = client.watch({}); call.on('data', function(book) {console.log(book);});}``` | Content Cell  |
+| Functions  | gPRC | 
+| ------------- | ------------- | 
+| List books  | ```function listBooks() {client.list({}, function(error, books) {printResponse(error, books);});}``` | 
+| Insert books  | ```function insertBook(id, title, author) {var book = { id: parseInt(id), title: title, author: author }; client.insert(book, function(error, empty) {printResponse(error, empty);});}```  |
+| Get books | ```function getBook(id) {client.get({ id: parseInt(id) }, function(error, book) {printResponse(error, book);});}```| 
+| Delete books  | ```function deleteBook(id) {client.delete({ id: parseInt(id) }, function(error, empty) {printResponse(error, empty);});}``` | 
+| Stream added books  | ```function watchBooks() {var call = client.watch({}); call.on('data', function(book) {console.log(book);});}``` | 
+
+| Functions  | REST API | 
+| ------------- | ------------- | 
+| List books  | ```function listBook() {
+  return axios
+    .get(url + "/book")
+    .then(function (response) {
+      console.log(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+``` | 
+| Insert books  | ```function addBook(id, title, author) {
+  return axios
+    .post(url + `/book`, {
+      id,
+      title,
+      author,
+    })
+    .then(function (response) {
+      console.log(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+```  |
+| Get books | ```function getBook(id) {
+  return axios
+    .get(url + `/book/${id}`)
+    .then(function (response) {
+      console.log(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+```| 
+| Delete books  | ```function deleteBook(id) {
+  return axios
+    .delete(url + `/book/${id}`)
+    .then(function (response) {
+      console.log(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+``` | 
+| Stream added books  | ```-``` |
 
 ## 4. What are the main differences between REST API and gRPC? 
 REST API directly calls HTTP methods (GET, POST, PUT, PATCH, DELETE) while gRPC uses HTTP/2. In HTTP, the addressable entities are data entities (resources) however they are procedures due to gRPC is based on the Remote Procedure Call (RPC) model. Since gRPC makes better use of HTTP/2 then REST API, gRPC can support high performance and scalability.
@@ -39,11 +94,11 @@ REST API directly calls HTTP methods (GET, POST, PUT, PATCH, DELETE) while gRPC 
 
 | Functions  | gPRC | REST API |
 | ------------- | ------------- | ------------- |
-| List books  | ```go run client.go list```  | Content Cell  |
-| Insert books  | ```go run client.go insert <id> <title> <author>```  | Content Cell  |
-| Get books | ```go run client.go get <id>```  | Content Cell  |
-| Delete books  | ```go run client.go delete <id>```  | Content Cell  |
-| Stream added books  | ```go run client.go watch```  | Content Cell  |
+| List books  | ```go run client.go list```  | ```node client.js listBook```  |
+| Insert books  | ```go run client.go insert <id> <title> <author>```  | ```node client.js addBook <id> <title> <author>```  |
+| Get books | ```go run client.go get <id>```  | ```node client.js getBook <id>```  |
+| Delete books  | ```go run client.go delete <id>```  | ```node client.js deleteBook <id>```  |
+| Stream added books  | ```go run client.go watch```  | ```-```  |
 
 ## 7. Draw a component diagram representing the book services with and without interfaces. 
 ![comp_diagram](images/comp_diagram.jpg)
