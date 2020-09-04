@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 var docs_handler = express.static(path.join(__dirname, "../docs"));
-app.use("/static", docs_handler);
+app.use("/docs", docs_handler);
 console.log(path.join(__dirname, "../docs"));
 // In-memory array of book objects
 var books = [
@@ -59,4 +59,5 @@ app.delete("/book/:id", (req, res) => {
 // start the Express server
 app.listen(port, () => {
   console.log(`server started at http://localhost:${port}`);
+  console.log(`documents started at http://localhost:${port}/docs`);
 });
