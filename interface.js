@@ -25,4 +25,8 @@ switch (interface) {
     else if (command == "get") restapiClient.getBook(process.argv[0]);
     else if (command == "delete") restapiClient.deleteBook(process.argv[0]);
   }
+  
 }
+ls.stdout.on('data', (data) => {
+  console.log(`${data}`);
+});
