@@ -49,4 +49,4 @@ REST API directly calls HTTP methods (GET, POST, PUT, PATCH, DELETE) while gRPC 
 | Stream added books  | ```node interface.js grpc watch```  | ```-```  |
 
 ## 7. Draw a component diagram representing the book services with and without interfaces. 
-
+![comp_diagram](images/comp_diag.jpg)
