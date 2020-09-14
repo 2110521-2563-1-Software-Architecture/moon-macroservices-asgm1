@@ -12,9 +12,12 @@ switch (interface) {
     ls = spawn("node", ["client.js", command].concat(process.argv), {
       cwd: "./grpc",
     });
+    ls.stdout.on("data", (data) => {
+      console.log(`${data}`);
+    });
+    return;
   }
   case "restapi": {
-    console.log("rest");
     if (command == "list") restapiClient.listBooks();
     else if (command == "insert")
       restapiClient.insertBook(
@@ -24,5 +27,6 @@ switch (interface) {
       );
     else if (command == "get") restapiClient.getBook(process.argv[0]);
     else if (command == "delete") restapiClient.deleteBook(process.argv[0]);
+    return;
   }
 }

@@ -16,7 +16,7 @@ var grpc = require("grpc");
 var booksProto = grpc.load("books.proto");
 
 var client = new booksProto.books.BookService(
-  "0.0.0.0:50051",
+  "35.240.177.194:50051",
   grpc.credentials.createInsecure()
 );
 
